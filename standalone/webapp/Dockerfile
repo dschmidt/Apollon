@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.9
+# syntax=docker/dockerfile:1.26@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32
 
 ARG NODE_IMAGE=node:24.21.0-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6
 
@@ -45,7 +45,7 @@ COPY tsconfig*.json ./
 RUN pnpm --filter @tumaet/apollon run build \
  && pnpm --filter @tumaet/webapp run build
 
-FROM nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 AS runtime
+FROM nginx:1.31-alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2 AS runtime
 
 LABEL org.opencontainers.image.source="https://github.com/ls1intum/Apollon" \
       org.opencontainers.image.url="https://github.com/ls1intum/Apollon" \
